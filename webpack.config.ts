@@ -43,7 +43,7 @@ function generateHeader(metadata: IMetadata) {
 export default <webpack.Configuration> {
     entry: './src/index.js',
     output: {
-        filename: `./dist/${npmPackage.name}.user.js`
+        filename: `./${npmPackage.name}.user.js`
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js']
