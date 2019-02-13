@@ -29,7 +29,7 @@ Then install with [ViolentMonkey](https://violentmonkey.github.io/) or your user
 
 ## Usage
 
-This script is available to install from [openuserjs.org](https://openuserjs.org/scripts/temrix/ekto-noflash)
+This script is available to install from [openuserjs.org](https://openuserjs.org/scripts/temrix/Ektoplazm_Noflash).
 
 ## Contributing
 
