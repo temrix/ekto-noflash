@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Replace the non-free Flash-audioplayer on Ektoplazm.com with a browser-native audioplayer.",
   "scripts": {
-    "build": "webpack --progress",
-    "build:prod": "webpack --progress --config webpack.prod.config.ts --define process.env.NODE_ENV=\"production\""
+    "build": "webpack --progress --mode development",
+    "build:prod": "webpack --progress --mode production"
   },
   "repository": {
     "type": "git",
