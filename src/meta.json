@@ -1,0 +1,9 @@
+{
+  "$schema": "file:../meta.schema.json",
+
+  "name": "Ektoplazm Noflash",
+  "namespace": "temrix",
+  "description": "Replace the non-free Flash-audioplayer on Ektoplazm.com with a browser-native audioplayer.",
+  "version": "1.0.0",
+  "include": ["https://ektoplazm.com/*"]
+}
