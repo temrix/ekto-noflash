@@ -6,7 +6,8 @@
     "build:dev": "NODE_ENV=development webpack --mode development",
     "build:prod": "webpack",
     "start:dev": "NODE_ENV=development webpack-dev-server --mode=development",
-    "web-ext:run": "web-ext run -s dist/"
+    "web-ext:run": "web-ext run -s dist/",
+    "web-ext:build": "web-ext build -s dist/ -a dist/ --overwrite-dest"
   },
   "repository": {
     "type": "git",
