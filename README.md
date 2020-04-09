@@ -12,9 +12,15 @@ Install using npm:
 npm install ekto-noflash
 ```
 
-Build using `npm run-script build`.
+#### Development mode
+
+Build using `npm run build:dev`. A development server can be launched by `npm run start:dev`.
+
+#### Production mode
 
 Build minified version using `npm run-script build:prod`.
+
+### Install as Userscript
 
 Start a server and serve the `dist`-folder. It is important not to drag-and-drop the file into the browser because then the character encoding gets messed up (at least in Firefox).
 
@@ -22,10 +28,14 @@ For example:
 
 ```bash
 npm install http-server --global
-http-server dist/ -a localhost
+http-server dist/ --port 8080 -a localhost
 ```
 
-Then install with [ViolentMonkey](https://violentmonkey.github.io/) or your userscript-manager of choice.
+Then go to `localhost:8080` and install with [ViolentMonkey](https://violentmonkey.github.io/) or your userscript-manager of choice.
+
+### Install as WebExtension
+
+Make sure that `web-ext` is installed and that the script was built as described above. Then `npm run web-ext:run` to launch it or `web-ext:build` to make a build which can then be loaded from the browser.
 
 ## Usage
 
