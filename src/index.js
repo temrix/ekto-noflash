@@ -1,27 +1,59 @@
 'use strict'
+const Buffer = require('buffer').Buffer
+const zip = require('lodash/zip')
 
-const Buffer = require('buffer/').Buffer;
+const createAudioElement = async (file) => {
+  try {
+    const div = document.createElement('div')
+    const audio = document.createElement('audio')
+    audio.setAttribute('controls', 'controls')
+    audio.setAttribute('preload', 'none')
+    audio.setAttribute('src', file)
+    div.appendChild(audio)
+    return div
+  } catch (e) {
+    console.error(e)
+  }
+}
 
-(() => {
-  Array.prototype.forEach.call(document.getElementsByClassName('post'), (post) => {
-    var source = post.querySelector('.audioplayer_container ~ p script').innerHTML
-    var encoded = source.match(/soundFile:\s*"([^"]+)"/)[1]
-    var decoded = Buffer.from(encoded, 'base64').toString()
-    var files = decoded.split(',')
+const processPost = async (post) => {
+  try {
+    const source = post.querySelector('.audioplayer_container ~ p script').innerHTML
+    const encoded = source.match(/soundFile:\s*"([^"]+)"/)[1]
+    const decoded = Buffer.from(encoded, 'base64').toString()
+    const files = decoded.split(',')
+    const siblings = post.querySelector('.tl').getElementsByClassName('t')
+    return [files, siblings]
+  } catch (e) {
+    console.error(e)
+  }
+}
 
-    var siblings = post.querySelector('.tl').getElementsByClassName('d')
-    files.forEach((file, i) => {
-      var divElement = document.createElement('div')
-
-      var audio = document.createElement('audio')
-      audio.setAttribute('controls', 'controls')
-      audio.setAttribute('preload', 'none')
-      audio.setAttribute('src', file)
-      var after = siblings[i]
-      divElement.appendChild(audio)
-      after.parentNode.insertBefore(divElement, after.nextSibling)
+const main = async () => {
+  try {
+    const posts = document.getElementsByClassName('post')
+    Array.from(posts).forEach((post) => {
+      post.querySelector('.audioplayer_container').innerHTML = ''
     })
+    const comb = Array.from(posts).map(await processPost)
+    for (const post of comb) {
+      const postArr = await post
+      const zipped = zip(postArr[0], postArr[1])
+      zipped.forEach(async (item, i) => {
+        const after = item[1]
+        after.parentNode.insertBefore(await createAudioElement(item[0]), after.nextSibling)
+      })
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
 
-    post.querySelector('.audioplayer_container').innerHTML = ''
+// If running as WebExtension, this is done by the browser.
+if (typeof browser === 'undefined') {
+  window.addEventListener('DOMContentLoaded', (event) => {
+    main()
   })
-})()
+} else {
+  main()
+}
