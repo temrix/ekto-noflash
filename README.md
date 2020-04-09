@@ -18,7 +18,7 @@ Build using `npm run build:dev`. A development server can be launched by `npm ru
 
 #### Production mode
 
-Build minified version using `npm run-script build:prod`.
+Build minified version using `npm run build:prod`.
 
 ### Install as Userscript
 
