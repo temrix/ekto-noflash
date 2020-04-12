@@ -1,6 +1,6 @@
 {
   "name": "ekto-noflash",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Replace the non-free Flash-audioplayer on Ektoplazm.com with a browser-native audioplayer.",
   "scripts": {
     "build:dev": "NODE_ENV=development webpack --mode development",

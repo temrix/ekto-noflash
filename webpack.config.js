@@ -20,7 +20,7 @@ module.exports = {
       headers: {
         name: baseManifest.name,
         version: dev ? `[version]-build.[buildNo]` : `[version]`,
-        match: baseManifest.content_scripts.matches,
+        match: baseManifest.content_scripts[0].matches,
         license: pkg.license,
         namespace: pkg.author
       }
