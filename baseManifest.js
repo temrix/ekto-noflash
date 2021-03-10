@@ -7,7 +7,7 @@ module.exports = {
   version: pkg.version,
 
   content_scripts: [{
-    matches: ['*://ektoplazm.com/*'],
+    matches: ['*://ektoplazm.com/section/free-music*'],
     js: [`${pkg.name}.user.js`]
   }]
 }
