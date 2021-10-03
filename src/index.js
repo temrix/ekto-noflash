@@ -1,5 +1,4 @@
 'use strict'
-const Buffer = require('buffer').Buffer
 const zip = require('lodash/zip')
 
 const createAudioElement = async (file) => {
