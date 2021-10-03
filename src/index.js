@@ -18,10 +18,18 @@ const createAudioElement = async (file) => {
 
 const processPost = async (post) => {
   try {
-    const source = post.querySelector('.audioplayer_container ~ p script').innerHTML
-    const encoded = source.match(/soundFile:\s*"([^"]+)"/)[1]
-    const decoded = Buffer.from(encoded, 'base64').toString()
-    const files = decoded.split(',')
+    let plainText = ''
+    const elmNodes = post.querySelector('.entry').childNodes
+    for (const elm of elmNodes) {
+      if (elm.nodeName === '#text') {
+        plainText = elm.textContent
+      }
+    }
+    const tracks = plainText.trim().replace('[audio:', '').replace(']', '').split(',')
+    const files = []
+    tracks.forEach((track, i) => {
+      files.push(`https://ektoplazm.com/audio/${track}`)
+    })
     const siblings = post.querySelector('.tl').getElementsByClassName('t')
     return [files, siblings]
   } catch (e) {
@@ -32,9 +40,6 @@ const processPost = async (post) => {
 const main = async () => {
   try {
     const posts = document.getElementsByClassName('post')
-    Array.from(posts).forEach((post) => {
-      post.querySelector('.audioplayer_container').innerHTML = ''
-    })
     const comb = Array.from(posts).map(await processPost)
     for (const post of comb) {
       const postArr = await post
