@@ -13,7 +13,7 @@ module.exports = {
     filename: `${pkg.name}.user.js`
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist')
+    static: path.join(__dirname, 'dist')
   },
   plugins: [
     new WebpackUserscript({
