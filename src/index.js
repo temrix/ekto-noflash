@@ -24,7 +24,11 @@ const processPost = async (post) => {
         plainText = elm.textContent
       }
     }
-    const tracks = plainText.trim().replace('[audio:', '').replace(']', '').split(',')
+    const tracks = plainText
+      .trim()
+      .replace('[audio:', '')
+      .replace(']', '')
+      .split(',')
     const files = []
     tracks.forEach((track, i) => {
       files.push(`https://ektoplazm.com/audio/${track}`)
@@ -45,7 +49,10 @@ const main = async () => {
       const zipped = zip(postArr[0], postArr[1])
       zipped.forEach(async (item, i) => {
         const after = item[1]
-        after.parentNode.insertBefore(await createAudioElement(item[0]), after.nextSibling)
+        after.parentNode.insertBefore(
+          await createAudioElement(item[0]),
+          after.nextSibling
+        )
       })
     }
   } catch (e) {
