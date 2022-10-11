@@ -53,11 +53,6 @@ const main = async () => {
   }
 }
 
-// If running as WebExtension, this is done by the browser.
-if (typeof browser === 'undefined') {
-  window.addEventListener('DOMContentLoaded', (event) => {
-    main()
-  })
-} else {
+window.addEventListener('DOMContentLoaded', (event) => {
   main()
-}
+})
