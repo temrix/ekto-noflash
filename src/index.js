@@ -60,6 +60,4 @@ const main = async () => {
   }
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
-  main()
-})
+main()
