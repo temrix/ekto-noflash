@@ -1,3 +1,5 @@
+Script is not needed anymore because webpage now has a native audioplayer by itself.
+
 # Ektoplazm Noflash
 
 This script replaces the non-free Flash-audioplayer with a browser-native audioplayer on the website Ektoplazm.
